@@ -1,0 +1,26 @@
+.bodysection{
+  text-align:center;
+  color: #fff;
+}
+.pad-top {
+  padding-top:15%;
+}
+
+#error-link {
+  font-size:150px;
+  padding:10px;
+}
+body, html {
+  height: 100%;
+}
+
+.bg {
+  background-color: cadetblue;
+  /* Half height */
+  height: 150%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

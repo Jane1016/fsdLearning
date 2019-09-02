@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row pading-top">
+      <div class="col-md-6 mx-auto">
+          <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline1"
+                name="inlineDefaultRadiosExample" value="All User" [(ngModel)]="roleCheck" (click)="getTheRole($event)" mdbInput>
+              <label class="custom-control-label" for="defaultInline1">All User</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline2"
+                [(ngModel)]="roleCheck" value="student" (click)="getTheRole($event)" name="inlineDefaultRadiosExample" mdbInput>
+                <label class="custom-control-label" for="defaultInline2">Student Management</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline3"
+                [(ngModel)]="roleCheck" value="mentor" (click)="getTheRole($event)" name="inlineDefaultRadiosExample" mdbInput>
+                <label class="custom-control-label" for="defaultInline3">Mentor Management</label>
+            </div>
+      </div>
+
+      <div class="col-md-6 mx-auto">
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"
+          [(ngModel)]="searchText" (blur)="searchItems();" id="search-input" mdbInput>
+      </div>
+
+    </div>
+
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+        <div>
+            <data-table
+                [title]="tableTile"
+                [items]="items"
+                [limit]="limit"
+                [itemCount]="itemCount"
+                [noDataMessage]="'There is no data avalibale to show.'"
+                [pageLimits]="limits"
+                (reload)="reloadItems($event)"
+                (rowClick)="rowClick($event)"
+                (rowDoubleClick)="rowDoubleClick($event)"
+                [rowTooltip]="rowTooltip" >
+                <data-table-column
+                    [property]="'username'"
+                    [header]="'Name'"
+                    [resizable]="false"
+                    [sortable]="true">
+                </data-table-column>
+                <data-table-column
+                    [property]="'email'"
+                    [header]="'Email'"
+                    [sortable]="true">
+                </data-table-column>
+                <data-table-column
+                    [property]="'role'"
+                    [header]="'Role'"
+                    [sortable]="true">
+                </data-table-column>
+                <data-table-column
+                    [property]="'email'"
+                    [header]="'Block/UnBlock'"
+                    [sortable]="true">
+                    <ng-template #dataTableCell let-item="item">
+                      <span style="color: grey">
+                        <span *ngIf="item.lockflag"><mdb-icon fas icon="user-lock"></mdb-icon> Block </span>
+                        <span *ngIf="!item.lockflag"><mdb-icon fas icon="user-check"></mdb-icon> UnBlock </span>
+                      </span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'active'"
+                    [header]="'Action'"
+                    [width]="120"
+                    [resizable]="true">
+                    <ng-template #dataTableHeader let-item="item">
+                      <span style="color: rgb(129, 27, 245)">Action</span>
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                      <a type="button" (click)="changeUserStatus(item);"
+                        class="btn btn-sm btn-default" mdbWavesEffect>
+                        <span *ngIf="!item.lockflag" style="color: rgb(129, 27, 245)"><mdb-icon far icon="edit"></mdb-icon>Block</span>
+                        <span *ngIf="item.lockflag" style="color: rgb(129, 27, 245)"><mdb-icon far icon="edit"></mdb-icon>Unblock</span>
+                      </a>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+         </div>
+        <br>
+    </div>
+</div>
+<ngx-loading [show]="loading"></ngx-loading>

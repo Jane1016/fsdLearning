@@ -1,0 +1,57 @@
+<div class="container ">
+  <div class="row  pad-top justify-content-center">
+    <div class="col col-8">
+      <h4 class="text-black-50">Apply For Releasing Courses</h4>
+    </div>
+  </div>
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+  <div class="row justify-content-center">
+    <div class="col col-8">
+          <!-- course name -->
+          <div class="md-form mt-3">
+            <input mdbInput mdbValidate type="text" id="courseFormName" class="form-control" [formControl]="courseFormName">
+            <label for="courseFormName">Course Name</label>
+            <mdb-error *ngIf="courseFormName.invalid && (courseFormName.dirty || courseFormName.touched)">required</mdb-error>
+            <mdb-success *ngIf="courseFormName.valid && (courseFormName.dirty || courseFormName.touched)">OK</mdb-success>
+          </div>
+
+          <!-- course Description -->
+          <div class="md-form">
+            <input mdbInput mdbValidate type="text" id="courseFormDesc" class="md-textarea form-control" [formControl]="courseFormDesc">
+            <label for="courseFormDesc">Course Description</label>
+            <mdb-error *ngIf="courseFormDesc.invalid && (courseFormDesc.dirty || courseFormDesc.touched)">required</mdb-error>
+            <mdb-success *ngIf="courseFormDesc.valid && (courseFormDesc.dirty || courseFormDesc.touched)">OK</mdb-success>
+          </div>
+
+          <!-- course Price -->
+          <div class="md-form">
+            <input mdbInput mdbValidate type="number" id="courseFormPrice" class="form-control" [formControl]="courseFormPrice">
+            <label for="courseFormPrice">Course Price</label>
+            <mdb-error *ngIf="courseFormPrice.invalid && (courseFormPrice.dirty || courseFormPrice.touched)">required</mdb-error>
+            <mdb-success *ngIf="courseFormPrice.valid && (courseFormPrice.dirty || courseFormPrice.touched)">OK</mdb-success>
+          </div>
+
+          <!-- course hours -->
+          <div class="md-form">
+              <input mdbInput mdbValidate type="number" id="courseFormHours" class="form-control" [formControl]="courseFormHours">
+              <label for="courseFormHours">Course TotalHours</label>
+              <mdb-error *ngIf="courseFormHours.invalid && (courseFormHours.dirty || courseFormHours.touched)">required</mdb-error>
+              <mdb-success *ngIf="courseFormHours.valid && (courseFormHours.dirty || courseFormHours.touched)">OK</mdb-success>
+          </div>
+
+          <!-- file upload -->
+          <div class="file-field md-form form-inline">
+            <input type="file" name="photo" ng2FileSelect [uploader]="uploader">
+            <!--(change)="uploader.uploadAll()"-->
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-4 d-flex">
+              <button mdbBtn color="info" outline="true" rounded="true" block="true"
+                class="z-depth-0 my-4 waves-light" mdbWavesEffect (click)="submitRegstr();">Apply</button>
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+</div>

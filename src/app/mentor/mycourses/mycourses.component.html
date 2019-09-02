@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row pading-top">
+        <div class="col-md-6 mx-auto"></div>
+        <div class="col-md-6 mx-auto">
+          <div class="form-inline md-form active-cyan active-cyan-2 mb-3 form-sm">
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"
+            [(ngModel)]="searchText" (blur)="searchItems();" id="search-input" mdbInput>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+          <div>
+              <data-table
+                  [title]="tableTile"
+                  [limit]="limit"
+                  [items]="items"
+                  [itemCount]="itemCount"
+                  [noDataMessage]="'There is no data avalibale to show.'"
+                  [pageLimits]="limits"
+                  (reload)="reloadItems($event)"
+                  (rowClick)="rowClick($event)"
+                  [rowTooltip]="rowTooltip" >
+                  <data-table-column
+                      [property]="'name'"
+                      [header]="'Title'"
+                      [resizable]="false"
+                      [sortable]="true">
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'price'"
+                      [header]="'Price'"
+                      [width] ="100"
+                      [sortable]="true">
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'totalHours'"
+                      [width] ="100"
+                      [header]="'Hours'"
+                      [sortable]="true">
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'description'"
+                      [header]="'Description'"
+                      [sortable]="true">
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'createDate'"
+                      [header]="'CreateDate'"
+                      [sortable]="true">
+                      <ng-template #dataTableCell let-item="item">
+                          <span>{{ item.createDate | date:'yyyy-MM-dd' }}</span>
+                      </ng-template>
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'flagPass'"
+                      [header]="'Status'"
+                      [sortable]="true">
+                      <ng-template #dataTableCell let-item="item">
+                          <span style="color: grey">
+                            <span *ngIf="item.flagPass"> Pass </span>
+                            <span *ngIf="!item.flagPass"> UnPass </span>
+                          </span>
+                      </ng-template>
+                  </data-table-column>
+                  <data-table-column
+                      [property]="'id'"
+                      [header]="'Action'"
+                      [width] ="100"
+                      [resizable]="true">
+                      <ng-template #dataTableHeader let-item="item">
+                        <span style="color: rgb(129, 27, 245)">Action</span>
+                      </ng-template>
+                      <ng-template #dataTableCell let-item="item">
+                        <a type="button"  [routerLink]="['/mentor/coursehandle']" [queryParams]="{courseID:item.id}"
+                          class="btn btn-sm btn-default" mdbWavesEffect *ngIf="!item.flagPass">
+                          <span style="color: rgb(54, 179, 201)"><mdb-icon far icon="edit"></mdb-icon></span>
+                        </a>
+                      </ng-template>
+                  </data-table-column>
+              </data-table>
+           </div>
+          <br>
+      </div>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>

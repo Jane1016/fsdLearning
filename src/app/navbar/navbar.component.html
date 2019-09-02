@@ -1,0 +1,40 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary" [containerInside]="false">
+ <!-- Navbar brand -->
+ <mdb-navbar-brand><a class="navbar-brand text-white"><strong>AdminManage</strong></a></mdb-navbar-brand>
+
+ <!-- Collapsible content -->
+ <links>
+
+     <!-- Links -->
+     <ul class="navbar-nav mr-auto">
+         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+             <a class="nav-link waves-light" [routerLink]="['/admin']" mdbWavesEffect>Index</a>
+         </li>
+         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+             <a class="nav-link waves-light" [routerLink]="['user']" mdbWavesEffect>UserManagement</a>
+         </li>
+         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+             <a class="nav-link waves-light" [routerLink]="['course']"  mdbWavesEffect>CoursesManagement</a>
+         </li>
+     </ul>
+     <!-- Links -->
+
+     <ul class="nav navbar-nav navbar-right fontbold" *ngIf="!notLogin">
+        <!-- login button -->
+        <li class="nav-item">
+            <a class="nav-link waves-light"><span>{{currentUser.username}}</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link waves-light" mdbWavesEffect (click)="logout();">Log Out</a>
+        </li>
+
+      </ul>
+
+ </links>
+ <!-- Collapsible content -->
+
+
+
+</mdb-navbar>
+<!--/.Navbar-->

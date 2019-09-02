@@ -1,0 +1,174 @@
+<!-- Main navigation -->
+<header>
+    <!-- Full Page Intro -->
+    <div class="view" style="background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <!-- Mask & flexbox options-->
+      <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container">
+          <!--Grid row-->
+          <div class="row mt-5">
+            <!--Grid column-->
+            <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+              <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
+              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+              <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Here contains
+                many courses in our Mentor Wide Training websit. You can find which you need.
+                Don't wait and sign up right now!
+              </h6>
+              <!--register component-->
+              <app-register></app-register>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 col-xl-5 mb-4">
+              <!--Form-->
+              <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
+                <mdb-card-body>
+                  <!--Header-->
+                  <div class="text-center">
+                    <h3 class="white-text">
+                      <mdb-icon fas icon="user" class="white-text"></mdb-icon> Login:</h3>
+                    <hr class="hr-light">
+                  </div>
+                  <!--Body-->
+
+                  <div class="md-form">
+                    <mdb-icon fas icon="envelope" class="prefix white-text active"></mdb-icon>
+                    <input type="email" id="form2" class="text-white form-control" mdbInput
+                    [formControl]="loginFormModalEmail" mdbValidate>
+                    <label for="form2" class="text-white">Your email</label>
+                    <mdb-error
+                      *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+                      please enter correct email
+                    </mdb-error>
+                    <mdb-success
+                      *ngIf="loginFormModalEmail.valid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+                      OK
+                    </mdb-success>
+                  </div>
+                  <div class="md-form">
+                    <mdb-icon fas icon="lock" class="prefix text-white active"></mdb-icon>
+                    <input type="password" id="form4" class="text-white form-control"
+                    [formControl]="loginFormModalPassword" mdbInput mdbValidate>
+                    <label for="form4" class="text-white">Your password</label>
+                    <mdb-error
+                      *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+                      input invaild
+                    </mdb-error>
+                    <mdb-success
+                      *ngIf="loginFormModalPassword.valid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+                      OK
+                    </mdb-success>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button mdbBtn color="indigo" (click)="loginSubmit();" mdbWavesEffect>Sign In</button>
+                    <hr class="hr-light mb-3 mt-4">
+                    <div class="inline-ul text-center d-flex justify-content-center">
+                      <a class="p-2 m-2 tw-ic">
+                        <mdb-icon fab icon="twitter" class="white-text"></mdb-icon>
+                      </a>
+                      <a class="p-2 m-2 li-ic">
+                        <mdb-icon fab icon="linkedin-in" class="white-text"> </mdb-icon>
+                      </a>
+                      <a class="p-2 m-2 ins-ic">
+                        <mdb-icon fab icon="instagram" class="white-text"> </mdb-icon>
+                      </a>
+                    </div>
+                  </div>
+                </mdb-card-body>
+              </mdb-card>
+              <!--/.Form-->
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </div>
+        <!-- Content -->
+      </div>
+      <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+  </header>
+  <!-- Main navigation -->
+
+<!--
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+      <form class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Sign in</p>
+
+
+    <div class="md-form">
+      <input type="email" id="defaultLoginFormEmail" class="form-control mb-4"
+        placeholder="E-mail" [formControl]="loginFormModalEmail"
+        mdbValidate>
+      <mdb-error
+        *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+        Input invalid
+      </mdb-error>
+      <mdb-success
+        *ngIf="loginFormModalEmail.valid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+        Input valid
+      </mdb-success>
+    </div>
+
+
+    <div class="md-form">
+      <input type="password" id="defaultLoginFormPassword" [formControl]="loginFormModalPassword"
+        class="form-control mb-4" placeholder="Password" mdbValidate>
+      <mdb-error
+        *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+        Input invalid
+      </mdb-error>
+      <mdb-success
+        *ngIf="loginFormModalPassword.valid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+        Input valid
+      </mdb-success>
+   </div>
+
+    <div class="d-flex justify-content-around">
+      <div>
+
+        <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+      </div>
+      <div>
+
+        <a href="">Forgot password?</a>
+      </div>
+    </div>
+
+
+    <button mdbBtn color="info" block="true" class="my-4" type="button" (click)="loginSubmit();">Sign in</button>
+
+
+    <p>Not a member?
+      <a href="register">Register</a>
+    </p>
+
+
+    <p>or sign in with:</p>
+
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="facebook"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="twitter"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="linkedin"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="github"></mdb-icon>
+    </a>
+
+  </form>
+
+    <div class="col-md-3"></div>
+  </div>
+</div>
+-->
